@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.E.B - FPE Roleplay Discord Bot</title>
+    <link rel="icon" type="image/webp" href="https://ella.janitorai.com/bot-avatars/VzlahPIQ2cksl1lHgq6DB.webp?width=400">
+    <link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Barrio', cursive;
+            background-color: #0a0e27;
+            color: #e5e7eb;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.light-theme {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        body.light-theme nav {
+            background: linear-gradient(135deg, #f0f0f0 0%, #ffffff 100%);
+            border-bottom: 1px solid #cccccc;
+        }
+
+        body.light-theme nav a {
+            color: #333333;
+        }
+
+        body.light-theme nav a:hover {
+            color: #0088ff;
+        }
+
+        body.light-theme .nav-title {
+            color: #000000;
+        }
+
+        body.light-theme .features-section {
+            background-color: #f5f5f5;
+            border-color: #cccccc;
+        }
+
+        body.light-theme .feature-card {
+            background-color: #ffffff;
+            border-color: #cccccc;
+            color: #000000;
+        }
+
+        body.light-theme .feature-card h3 {
+            color: #000000;
+        }
+
+        body.light-theme .feature-card p {
+            color: #333333;
+        }
+
+        body.light-theme .hero h1 {
+            color: #000000;
+        }
+
+        body.light-theme .hero-subtitle {
+            color: #333333;
+        }
+
+        body.light-theme .section-header h2 {
+            color: #000000;
+        }
+
+        body.light-theme .section-header p {
+            color: #333333;
+        }
+
+        body.light-theme .bots-section {
+            background-color: #f5f5f5;
+        }
+
+        body.light-theme .bot-card {
+            background-color: #ffffff;
+            border-color: #cccccc;
+            color: #000000;
+        }
+
+        body.light-theme .bot-card h3 {
+            color: #000000;
+        }
+
+        body.light-theme .bot-card p {
+            color: #333333;
+        }
+
+        body.light-theme .logo {
+            cursor: pointer;
+        }
+
+        body.light-theme .faq-item {
+            background-color: #ffffff;
+            border-color: #cccccc;
+            color: #000000;
+        }
+
+        body.light-theme .faq-item h3 {
+            color: #000000;
+        }
+
+        body.light-theme .faq-item p {
+            color: #333333;
+        }
+
+        body.light-theme .faq-question {
+            background-color: #ffffff;
+        }
+
+        body.light-theme .faq-question-text {
+            color: #000000;
+        }
+
+        body.light-theme .faq-toggle {
+            color: #0088ff;
+        }
+
+        body.light-theme .faq-answer {
+            background-color: rgba(0, 136, 255, 0.05);
+        }
+
+        body.light-theme .faq-answer p {
+            color: #333333;
+        }
+
+        body.light-theme .faq-section {
+            background-color: #ffffff;
+        }
+
+        body.light-theme .faq-heading h1 {
+            color: #000000;
+        }
+
+        body.light-theme .faq-heading p {
+            color: #333333;
+        }
+
+        body.light-theme .faq-category-title {
+            color: #000000;
+        }
+
+        body.light-theme .stat-label {
+            color: #000000 !important;
+        }
+
+        body.light-theme footer {
+            background-color: #f0f0f0;
+            border-color: #cccccc;
+            color: #000000;
+        }
+
+        .logo {
+            cursor: pointer;
+        }
+
+        nav {
+            padding: 10px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #0a0e27 0%, #0f1229 100%);
+            border-bottom: 1px solid #1e2749;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            gap: 40px;
+        }
+
+        .logo {
+            height: 190px;
+            width: auto;
+            margin-right: auto;
+            margin-left: -40px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .nav-title {
+            font-size: 48px;
+            font-weight: 900;
+            color: #ffffff;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin: 0 auto;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #9ca3af;
+            font-weight: 500;
+            font-size: 24px;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: #00bfff;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .hero {
+            padding: 120px 60px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #ffffff;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #9ca3af;
+            margin-bottom: 40px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 14px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid #ff0000;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .cta-primary {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+
+        .cta-primary:hover {
+            background-color: #cc0000;
+            border-color: #cc0000;
+        }
+
+        .cta-secondary {
+            background-color: transparent;
+            color: #ff0000;
+            border-color: #ff0000;
+        }
+
+        .cta-secondary:hover {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+
+        .features-section {
+            padding: 40px 60px;
+            background-color: #0f1229;
+            border-top: 1px solid #1e2749;
+            border-bottom: 1px solid #1e2749;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: #9ca3af;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 32px;
+            background-color: #0a0e27;
+            border: 1px solid #1e2749;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #00bfff;
+            background-color: rgba(0, 191, 255, 0.05);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #9ca3af;
+            line-height: 1.6;
+        }
+
+        .stats-section {
+            padding: 20px 60px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: #00bfff;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        .bots-section {
+            padding: 40px 60px;
+            background-color: #0f1229;
+        }
+
+        .bots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+
+        .bot-card {
+            padding: 24px;
+            background-color: #0a0e27;
+            border: 1px solid #1e2749;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .bot-card:hover {
+            border-color: #00bfff;
+            transform: translateY(-4px);
+        }
+
+        .bot-avatar {
+            font-size: 48px;
+            margin-bottom: 16px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bot-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .bot-card p {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .bot-btn {
+            background-color: #00bfff;
+            color: #0a0e27;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .bot-btn:hover {
+            background-color: #0099cc;
+        }
+
+        .faq-section {
+            padding: 100px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .faq-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-heading h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .faq-heading p {
+            font-size: 16px;
+            color: #9ca3af;
+        }
+
+        .faq-category {
+            margin-bottom: 60px;
+        }
+
+        .faq-category-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #00bfff;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #1e2749;
+            width: 50%;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+            border: 1px solid #1e2749;
+            border-radius: 8px;
+            background-color: #0f1229;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(0, 191, 255, 0.05);
+        }
+
+        .faq-question-text {
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            color: #00bfff;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: rgba(0, 191, 255, 0.02);
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+            padding: 20px;
+            border-top: 1px solid #1e2749;
+        }
+
+        .faq-answer p {
+            font-size: 14px;
+            color: #9ca3af;
+            line-height: 1.7;
+        }
+
+        footer {
+            padding: 40px 60px;
+            text-align: center;
+            border-top: 1px solid #1e2749;
+            background-color: #ffffff;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #000000;
+        }
+
+        footer a {
+            color: #0099cc;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #006699;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .features-section,
+            .stats-section,
+            .bots-section,
+            .faq-section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo"><img src="https://ella.janitorai.com/bot-avatars/VzlahPIQ2cksl1lHgq6DB.webp?width=400" alt="Logo"></div>
+        <div class="nav-title"><span style="color: #ff0000;">P</span>aper <span style="color: #ff0000;">E</span>ducation <span style="color: #ff0000;">B</span>ots</div>
+        <div class="nav-links">
+            <a onclick="showPage('home'); return false;">Home</a>
+            <a href="https://discord.gg/Vf888P7BQK" target="_blank">Support</a>
+            <a onclick="showPage('faq'); return false;">FAQ</a>
+        </div>
+    </nav>
+
+    <div id="home-page" class="page active">
+        <section class="hero">
+            <h1>Welcome to P.E.B!</h1>
+            <p class="hero-subtitle">A website that contains all the existing Fundamental Paper Education discord bots.</p>
+            <div class="cta-group">
+                <button class="cta-btn cta-primary" onclick="document.querySelector('.bots-section').scrollIntoView({behavior: 'smooth'})">View Bots</button>
+                <a href="https://discord.gg/Vf888P7BQK" target="_blank" rel="noopener noreferrer" class="cta-btn cta-secondary">Join Server</a>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="section-header">
+                <h2>Why P.E.B?</h2>
+                <p>Discover what makes our Discord bots special</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✍️</div>
+                    <h3>Character Writing</h3>
+                    <p>Our characters has a deep and accurate personality writing and behaviour.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Easy Interaction</h3>
+                    <p>To communicate with the bots, just mention or reply to their message or enable the auto response to make him speak freely.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Organized</h3>
+                    <p>Our bot's credentials are protected from leaks and public usage.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="section-header">
+                <h2>Dev team</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <img src="https://i.pinimg.com/736x/ef/b0/51/efb0519e4cf87530410f0c1e88e98978.jpg" alt="Developer" style="width: 200px; height: 200px; border: 2px solid #ffffff; border-radius: 8px; margin-bottom: 16px; display: block; margin-left: auto; margin-right: auto; object-fit: cover;">
+                    <div class="stat-label" style="color: #ffffff; font-size: 18px;">@gibberishnickname</div>
+                </div>
+                <div class="stat-card">
+                    <img src="https://media.moddb.com/images/members/5/4563/4562559/profile/Discord-Logo.png" alt="Discord" style="width: 150px; height: 150px; margin-bottom: 16px; display: block; margin-left: auto; margin-right: auto; object-fit: contain;">
+                </div>
+                <div class="stat-card">
+                    <img src="https://i.pinimg.com/736x/a6/29/8f/a6298fff40f97fd1e8d3d390e051bee6.jpg" alt="Developer" style="width: 200px; height: 200px; border: 2px solid #ffffff; border-radius: 8px; margin-bottom: 16px; display: block; margin-left: auto; margin-right: auto; object-fit: cover;">
+                    <div class="stat-label" style="color: #ffffff; font-size: 18px;">@fpefanaddict</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bots-section">
+            <div class="section-header">
+                <h2>Our Bot Catalogue</h2>
+                <p>Choose from our collection of specialized roleplay bots</p>
+            </div>
+            <div class="bots-grid">
+                <div class="bot-card">
+                    <div class="bot-avatar"><img src="https://i.pinimg.com/474x/1b/0e/17/1b0e1759631e94c8d70c30001a04bf4c.jpg" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <h3>Engel</h3>
+                    <p>Sweet and caring!</p>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1445511732993982688" target="_blank" class="bot-btn" style="display: inline-block; text-decoration: none; color: inherit;">Add Bot</a>
+                </div>
+                <div class="bot-card">
+                    <div class="bot-avatar"><img src="https://avatars.mds.yandex.net/i?id=71898588a618995d02296e4d9dc02b69_l-5869047-images-thumbs&n=13" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <h3>Claire</h3>
+                    <p>A new student!</p>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1445518213008986122" target="_blank" class="bot-btn" style="display: inline-block; text-decoration: none; color: inherit;">Add Bot</a>
+                </div>
+                <div class="bot-card">
+                    <div class="bot-avatar"><img src="https://i.pinimg.com/originals/ad/62/eb/ad62eb3f4eeeac7430492ac252ef8684.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <h3>Abbie</h3>
+                    <p>Shy and adorable boy!</p>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1445522484018286727" target="_blank" class="bot-btn" style="display: inline-block; text-decoration: none; color: inherit;">Add Bot</a>
+                </div>
+                <div class="bot-card">
+                    <div class="bot-avatar"><img src="https://i.pinimg.com/474x/06/83/dd/0683dd42bae942ba0d11c6be50bc99ce.jpg" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <h3>Bubble</h3>
+                    <p>Gentle and elegant!</p>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1446511812043604139" target="_blank" class="bot-btn" style="display: inline-block; text-decoration: none; color: inherit;">Add Bot</a>
+                </div>
+                <div class="bot-card">
+                    <div class="bot-avatar"><img src="https://static.wikia.nocookie.net/b4290e70-0e47-4df0-94fb-4a9a2d168fc7/scale-to-width/755" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <h3>Lana</h3>
+                    <p>Likes to craft!</p>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1446512877992280136" target="_blank" class="bot-btn" style="display: inline-block; text-decoration: none; color: inherit;">Add Bot</a>
+                </div>
+                <div class="bot-card">
+                    <div class="bot-avatar"><img src="https://i.pinimg.com/474x/15/34/20/15342016b61cf7e0ed1a5250312eabff.jpg" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <h3>Oliver</h3>
+                    <p>Funny!</p>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1446516068951785663" target="_blank" class="bot-btn" style="display: inline-block; text-decoration: none; color: inherit;">Add Bot</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="faq-page" class="page">
+        <section class="faq-section">
+            <div class="faq-heading">
+                <h1>Frequently Asked Questions</h1>
+                <p>Quick answers to common questions about Paperverse</p>
+            </div>
+
+            <div class="faq-category">
+                <h2 class="faq-category-title">General Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span class="faq-question-text">What is P.E.B?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>P.E.B is a small project dedicated to creating AI discord bots. The project inspire by the fandom named Fundamental Paper Education by Kaatie A3DGhost</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span class="faq-question-text">Is P.E.B free to use?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All P.E.B bots are completely free to use. Simply invite them to your Discord server and start creating amazing roleplay experiences.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span class="faq-question-text">How do I add a bot to my server?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Click the "Add Bot" button on any bot card. This will redirect you to Discord's authorization page where you can select your server and permissions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <h2 class="faq-category-title">Technical Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span class="faq-question-text">What permissions do the bots need?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our bots require: Send Messages, Read Message History, Embed Links, Manage Channels, and React to Messages. Each bot specifies required permissions during invitation.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span class="faq-question-text">How does the dialogue system work?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply mention or reply to one of our bots in Discord. The bot will analyze your message and respond with character-appropriate dialogue.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 P.E.B. Powered by Verba.inc | <a href="https://discord.gg/Vf888P7BQK" target="_blank">Join our Discord</a></p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId + '-page').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function toggleFAQ(element) {
+            element.parentElement.classList.toggle('open');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+            localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+        }
+
+        // Load theme preference on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+            }
+        });
+
+        // Add click event to logo
+        document.addEventListener('DOMContentLoaded', function() {
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                logo.addEventListener('click', toggleTheme);
+            }
+        });
+    </script>
+
+    <!-- Consent banner for IP collection -->
+    <style>
+        #consent-banner {
+            position: fixed;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: rgba(0,0,0,0.85);
+            color: #fff;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+            z-index: 9999;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 980px;
+            margin: 0 auto;
+            font-family: inherit;
+        }
+        #consent-banner p { margin: 0; padding-right: 12px; flex: 1; }
+        #consent-banner .btn { background: #0ea5e9; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+        #consent-banner .btn.secondary { background: transparent; border: 1px solid #fff; }
+        @media (max-width: 640px) { #consent-banner { flex-direction: column; align-items: stretch; } }
+    </style>
+
+    <div id="consent-banner" style="display:none;">
+        <p>
+            We ask your consent to collect your cookies for internal analytics and security. They will be stored in our site's database and will only be shared with our team. By clicking "I Agree" you consent to this processing. 
+            <a href="#" id="consent-privacy-link" style="color:#9fe7ff; text-decoration:underline;">Privacy details</a>
+        </p>
+        <div>
+            <button class="btn" id="consent-agree">I Agree</button>
+            <button class="btn secondary" id="consent-decline">Decline</button>
+        </div>
+    </div>
+
+    <script>
+    (function(){
+        try {
+            var flag = localStorage.getItem('peb_ip_consented');
+            if(flag === 'granted' || flag === 'denied') return; // don't show again
+        } catch(e) { /* ignore */ }
+
+        var banner = document.getElementById('consent-banner');
+        banner.style.display = 'flex';
+
+        document.getElementById('consent-privacy-link').addEventListener('click', function(e){
+            e.preventDefault();
+            alert('We store the cookies in a private database. Data is used for security and analytics only. Contact site owner to request deletion.');
+        });
+
+        document.getElementById('consent-agree').addEventListener('click', function(){
+            banner.style.display = 'none';
+            try { localStorage.setItem('peb_ip_consented','granted'); } catch(e){}
+
+            // Send consent to server which will capture the IP from the connection
+            fetch('/api/consent', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ consent: true })
+            }).then(function(resp){
+                // optional: handle server ack
+                return resp.json();
+            }).then(function(j){
+                console.log('Consent recorded', j);
+            }).catch(function(err){
+                console.warn('Consent request failed', err);
+            });
+        });
+
+        document.getElementById('consent-decline').addEventListener('click', function(){
+            banner.style.display = 'none';
+            try { localStorage.setItem('peb_ip_consented','denied'); } catch(e){}
+        });
+    })();
+    </script>
+
+
+</body>
+</html>
